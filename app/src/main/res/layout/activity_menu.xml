@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/_bg_menu"
+        android:orientation="vertical"
+        tools:context=".activites.menu.MenuLauncherActivity">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/ic_woman" />
+
+
+            <EditText
+                    android:id="@+id/name_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/yeseva_one_regular"
+                    android:text="Имя"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="редактировать"
+                    android:textColor="@color/purpul"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/partner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_man" />
+
+            <TextView
+                    android:id="@+id/partner_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/yeseva_one_regular"
+                    android:lines="1"
+                    android:text="Имя"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+
+            <TextView
+                    android:id="@+id/btnDisconnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="отсоединиться"
+                    android:textColor="@color/purpul"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="29dp"
+            android:background="@color/opasity_white15"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:id="@+id/btnGoConnectActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:paddingStart="31dp"
+                android:paddingEnd="31dp">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_connect" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="Соеденение \nс партнером"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/btnGoMenuTestsActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:paddingStart="25dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="25dp">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_test_go" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="Тесты"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginEnd="29dp"
+            android:background="@color/opasity_white15"
+            android:orientation="horizontal">
+
+        <LinearLayout
+                android:id="@+id/btnGoTogetherTestsActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:paddingStart="26dp"
+                android:paddingEnd="26dp">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_togather" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="Пройти на одном\n устройстве"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/goIntresting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:paddingStart="43dp"
+                android:paddingEnd="43dp">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_intrasting" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/comfortaa_regular"
+                    android:text="Интересное"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/planet" />
+
+
+    <!--    <TextView-->
+    <!--            android:id="@+id/button"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="70dp"-->
+    <!--            android:background="@color/opasity_white15"-->
+    <!--            android:onClick="goToNextActivity"-->
+    <!--            android:text="Начать тест"-->
+    <!--            android:textAllCaps="false"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="24sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.0"-->
+    <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--            android:id="@+id/editTextMainText"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_marginStart="16dp"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            android:layout_marginEnd="16dp"-->
+    <!--            android:layout_marginBottom="16dp"-->
+    <!--            android:clickable="false"-->
+    <!--            android:ems="10"-->
+    <!--            android:scrollbars="vertical"-->
+    <!--            android:text="Представьте, что вы в космосе и вам нужно выбрать планету для счастливой жизни и узнать о ней всё от самого её зарождения. Каждая душа человека - это как целая планета, которая приобретает за свою жизнь опыт и своё восприятие мира. Этот тест своего рода полное познание вашего партнёра и даже вас самих в различных сферах жизни. Тест разработан психотерапевтом результаты которого самые точные исходя от вашей индивидуальной психологии и взаимодействии в ваших отношениях. Отвечая откровенно на вопросы,-->
+    <!--начало у вас отношений или вы уже вместе длительное время, в любом случае узнаете о друг друге много нового и важного. Необходимо отвечать на вопросы вместе и обговаривать их. Скачайте приложение на два устройства и одному из партнёров необходимо ввести код другого партнёра. Тест состоит из трёх частей и в конце каждой вас ждёт результат. Удачи!"-->
+    <!--            android:textAlignment="viewStart"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="19sp"-->
+    <!--            app:autoSizeMaxTextSize="19sp"-->
+    <!--            app:autoSizeMinTextSize="16sp"-->
+    <!--            app:layout_constraintBottom_toTopOf="@+id/button"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
+
+</LinearLayout>
