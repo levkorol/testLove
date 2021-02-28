@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.leokorol.testlove.R
 import com.leokorol.testlove.TestApp
-import com.leokorol.testlove.activites.menu.MenuLauncherActivity
 import com.leokorol.testlove.activites.menu.MenuTestsActivity
 import com.leokorol.testlove.data_base.AuthManager2
 import com.leokorol.testlove.model.AnswerVariant
@@ -53,21 +52,16 @@ open class BaseTestQuestionsActivity(
         val llm = LinearLayoutManager(this)
         _recyclerView.layoutManager = llm
 
-
         _currentQuestionIndex = TestApp.sharedPref?.getInt(lastQuestion, 0) ?: 0
 
         goToQuestion(0)
-
-
     }
 
     fun goToMenuActivity(view: View?) {
         replaceActivity(MenuTestsActivity())
     }
 
-
     fun goToNextQuestion(view: View?) {
-        // if( ) {       //todo если вопрос последний по клику перебрасывать в MenuTestsActivity()
         if (countOfCheckedAnswers == 0) {
             showToast("Выберите 1-2 варианта ответа")
         } else {
@@ -78,13 +72,13 @@ open class BaseTestQuestionsActivity(
                 }
             }
             AuthManager2.saveAnswer(numberTest, _currentQuestionIndex, answerSet)
+
             if (_currentQuestionIndex == _questions.size - 1) {
-                //AuthManager.instance.sendAnswers(_allAnswerVariants, _answersBranch)
                 AuthManager2.copyAnswersFromPrefsToDatabase(numberTest, _questions.size)
-                val intent = Intent(this, MenuLauncherActivity::class.java)
-                intent.putExtra("Background", _backgroundResource)
-                startActivity(intent) //todo активити с информацией после завершения
-                showToast("Вы прошли тест №${numberTest + 1}. Если ваш партнер тоже ответил на все вопросы этой части теста, то результаты можно посмотреть в категории Результаты Теста №${numberTest + 1}")//todo dialog
+                val intent = Intent(this, MenuTestsActivity::class.java)
+                startActivity(intent)
+                showToast("Вы прошли тест №${numberTest + 1}. Если ваш партнер тоже прошел этот тест смотрите результаты в категории Результаты Теста №${numberTest + 1}")
+
                 //todo database.addCompleteListeners{ }  слушать ответы
             } else {
                 _currentQuestionIndex++
@@ -92,10 +86,6 @@ open class BaseTestQuestionsActivity(
                 goToQuestion(_currentQuestionIndex)
             }
         }
-//    else {
-//            replaceActivity(MenuTestsActivity())
-//            showToast("Вы прошли тест. Когда ваш партнер закончит результаты появятся в категории Результаты под тестом")
-//        }
     }
 
     private fun goToQuestion(numberQuestion: Int) {

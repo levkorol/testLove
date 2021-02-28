@@ -36,14 +36,26 @@
                 android:textSize="16sp" />
     </LinearLayout>
 
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/comfortaa_regular"
+            android:text="   Поставьте нам оценку :)"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_baseline_star_rate_24" />
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="29dp"
                 android:src="@drawable/ic_email" />
@@ -108,7 +120,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="16dp"
-                android:text="TODO - это органайзер для ваших важных дел и мыслей.\n\n*Приятный и удобный дизайн;\n*Расписание на каждый день; \n*Установка целей;\n*Заметки с возможностью сортировки по папкам."
+                android:fontFamily="@font/comfortaa_medium"
+                android:text="TODO - это органайзер для ваших важных дел и мыслей.\n\nПриятный и удобный дизайн;\n\nРасписание на каждый день; \n\nУстановка целей;\n\nЗаметки с возможностью сортировки по папкам;\n\nНет платного контента."
                 android:textColor="@android:color/white" />
 
     </LinearLayout>
@@ -126,7 +139,7 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Посмотреть"
+            android:text="Посмотреть в Google Play"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="19sp" />

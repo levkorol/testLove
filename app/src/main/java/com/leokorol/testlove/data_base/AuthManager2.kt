@@ -7,7 +7,7 @@ import com.google.firebase.database.ValueEventListener
 import com.leokorol.testlove.TestApp
 
 object AuthManager2 {
-    //todo
+
     private var isInitialised = false
     private lateinit var partnerConnectedListener: () -> Unit
 
@@ -81,11 +81,11 @@ object AuthManager2 {
 
     fun subscribePartnerTestResults(partnerCode: String) {
 
-        val test1Ref = database.getReference(partnerCode).child("test_0")
-        val test2Ref = database.getReference(partnerCode).child("test_1")
-        val test3Ref = database.getReference(partnerCode).child("test_2")
+        val test1RefPartner = database.getReference(partnerCode).child("test_0")
+        val test2RefPartner = database.getReference(partnerCode).child("test_1")
+        val test3RefPartner = database.getReference(partnerCode).child("test_2")
 
-        test1Ref.addValueEventListener(object : ValueEventListener {
+        test1RefPartner.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 test1PartnerResults = dataSnapshot.value as List<List<Any>>?
                 checkAnswers()
@@ -94,7 +94,7 @@ object AuthManager2 {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        test2Ref.addValueEventListener(object : ValueEventListener {
+        test2RefPartner.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 test2PartnerResults = dataSnapshot.value as List<List<Any>>?
                 checkAnswers()
@@ -103,7 +103,7 @@ object AuthManager2 {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        test3Ref.addValueEventListener(object : ValueEventListener {
+        test3RefPartner.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 test3PartnerResults = dataSnapshot.value as List<List<Any>>?
                 checkAnswers()
@@ -112,19 +112,28 @@ object AuthManager2 {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-//        answers1Ref.addValueEventListener(AnswersListener("answers", _answers1ReceivedListener))
-//        answers2Ref.addValueEventListener(AnswersListener("answers2", _answers2ReceivedListener))
-//        answers3Ref.addValueEventListener(AnswersListener("answers3", _answers3ReceivedListener))
+//       test1Ref.addValueEventListener() //todo доделать логику получения с сравнивания ответов
+//       test2Ref.addValueEventListener()
+//       test3Ref.addValueEventListener()
+
     }
 
 
+    fun setResultTestThree(
+        test3MyResults: List<List<Any>>?,
+        test3PartnerResults: List<List<Any>>?,
+    ) {
+        val equal = 0
+
+    }
+
     fun subscribeMyTestResults(myCode: String) {
 
-        val test1Ref = database.getReference(myCode).child("test_0")
-        val test2Ref = database.getReference(myCode).child("test_1")
-        val test3Ref = database.getReference(myCode).child("test_2")
+        val test1RefMy = database.getReference(myCode).child("test_0")
+        val test2RefMy = database.getReference(myCode).child("test_1")
+        val test3RefMy = database.getReference(myCode).child("test_2")
 
-        test1Ref.addValueEventListener(object : ValueEventListener {
+        test1RefMy.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 test1MyResults = dataSnapshot.value as List<List<Any>>?
                 checkAnswers()
@@ -133,7 +142,7 @@ object AuthManager2 {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        test2Ref.addValueEventListener(object : ValueEventListener {
+        test2RefMy.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 test2MyResults = dataSnapshot.value as List<List<Any>>?
                 checkAnswers()
@@ -142,7 +151,7 @@ object AuthManager2 {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        test3Ref.addValueEventListener(object : ValueEventListener {
+        test3RefMy.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 test3MyResults = dataSnapshot.value as List<List<Any>>?
                 checkAnswers()
@@ -151,9 +160,9 @@ object AuthManager2 {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        //answers1Ref.addValueEventListener(AnswersListener("answers", _answers1ReceivedListener))
-        //answers2Ref.addValueEventListener(AnswersListener("answers2", _answers2ReceivedListener))
-        //answers3Ref.addValueEventListener(AnswersListener("answers3", _answers3ReceivedListener))
+//       test1Ref.addValueEventListener() //todo доделать логику получения с сравнивания ответов
+//       test2Ref.addValueEventListener()
+//       test3Ref.addValueEventListener()
     }
 
     fun checkAnswers() {

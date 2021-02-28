@@ -13,10 +13,10 @@ class TestApp : Application() {
         context = this
         init()
 
-        AuthManager2.isConnectedPartner(getUserCode(), {
-            AuthManager2.subscribePartnerTestResults(getPartnerCode())
-            AuthManager2.subscribeMyTestResults(getUserCode())
-        }, {})
+//        AuthManager2.isConnectedPartner(getUserCode(), {
+//            AuthManager2.subscribePartnerTestResults(getPartnerCode())
+//            AuthManager2.subscribeMyTestResults(getUserCode())
+//        }, {})
 
     }
 

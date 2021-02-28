@@ -20,5 +20,4 @@ class SuccessConnectActivity : AppCompatActivity() {
         buttonGoTests.setOnClickListener { replaceActivity(MenuTestsActivity()) }
         sgoMenuActivity.setOnClickListener { replaceActivity(MenuLauncherActivity()) }
     }
-
 }

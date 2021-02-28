@@ -5,9 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.leokorol.testlove.TestApp
-import com.leokorol.testlove.base_listeners.IAnswersReceivedListener
 import com.leokorol.testlove.base_listeners.ISimpleListener
-import java.util.*
 
 class AuthManager {
 
@@ -17,11 +15,11 @@ class AuthManager {
     var isConnectedToPartner = false
         private set
     private var _currentPart = 0
-    private var _isSubscribedToSessions = false
-    private var _partnerConnectedListener: ISimpleListener? = null
-    private var _answers1ReceivedListener: IAnswersReceivedListener? = null
-    private var _answers2ReceivedListener: IAnswersReceivedListener? = null
-    private var _answers3ReceivedListener: IAnswersReceivedListener? = null
+//    private var _isSubscribedToSessions = false
+//    private var _partnerConnectedListener: ISimpleListener? = null
+//    private var _answers1ReceivedListener: IAnswersReceivedListener? = null
+//    private var _answers2ReceivedListener: IAnswersReceivedListener? = null
+//    private var _answers3ReceivedListener: IAnswersReceivedListener? = null
 
     var currentPart: Int
         get() = _currentPart
@@ -31,86 +29,86 @@ class AuthManager {
                 ?.putInt(TestApp.LAST_PART, _currentPart)?.apply()
         }
 
+//
+//    fun subscribeToSessions() {
+//        if (_isSubscribedToSessions) {
+//            return
+//        }
+//        val database = FirebaseDatabase.getInstance()
+//        val sessionsRef = database.getReference("sessions")
+//        sessionsRef.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                if (!dataSnapshot.exists() || isConnectedToPartner) {
+//                    return
+//                }
+//                for (snapshot in dataSnapshot.children) {
+//                    val sessionCode = snapshot.key
+//                    if (sessionCode!!.contains(code)) {
+//                        _sessionCode = sessionCode
+//                        sessionsRef.child(sessionCode).child("user1").setValue(231)
+//                        if (_partnerConnectedListener != null) {
+//                            _partnerConnectedListener!!.eventOccured()
+//                        }
+//                        subscribeToSession()
+//                        isConnectedToPartner = true
+//                        sessionsRef.child(sessionCode).child("user1").removeValue()
+//                    }
+//                }
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {}
+//        })
+//        _isSubscribedToSessions = true
+//    }
 
-    fun subscribeToSessions() {
-        if (_isSubscribedToSessions) {
-            return
-        }
-        val database = FirebaseDatabase.getInstance()
-        val sessionsRef = database.getReference("sessions")
-        sessionsRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (!dataSnapshot.exists() || isConnectedToPartner) {
-                    return
-                }
-                for (snapshot in dataSnapshot.children) {
-                    val sessionCode = snapshot.key
-                    if (sessionCode!!.contains(code)) {
-                        _sessionCode = sessionCode
-                        sessionsRef.child(sessionCode).child("user1").setValue(231)
-                        if (_partnerConnectedListener != null) {
-                            _partnerConnectedListener!!.eventOccured()
-                        }
-                        subscribeToSession()
-                        isConnectedToPartner = true
-                        sessionsRef.child(sessionCode).child("user1").removeValue()
-                    }
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {}
-        })
-        _isSubscribedToSessions = true
-    }
-
-    private fun subscribeToSession() {
-        val database = FirebaseDatabase.getInstance()
-        val sessionsRef = database.getReference("sessions")
-        val sessionRef = sessionsRef.child(_sessionCode!!)
-        val answers1Ref = sessionRef.child("answers")
-        val answers2Ref = sessionRef.child("answers2")
-        val answers3Ref = sessionRef.child("answers3")
-        answers1Ref.addValueEventListener(AnswersListener("answers", _answers1ReceivedListener))
-        answers2Ref.addValueEventListener(AnswersListener("answers2", _answers2ReceivedListener))
-        answers3Ref.addValueEventListener(AnswersListener("answers3", _answers3ReceivedListener))
-    }
-
-    private inner class AnswersListener(
-        private val _answersBranch: String,
-        private val _listener: IAnswersReceivedListener?
-    ) : ValueEventListener {
-        override fun onDataChange(dataSnapshot: DataSnapshot) {
-            if (!dataSnapshot.exists()) {
-                return
-            }
-            val database = FirebaseDatabase.getInstance()
-            val sessionsRef = database.getReference("sessions")
-            val sessionRef = sessionsRef.child(_sessionCode!!)
-            val answersRef = sessionRef.child(_answersBranch)
-            val isFinishedRef = sessionRef.child("isFinished")
-            val obj = dataSnapshot.value
-            if (obj is HashMap<*, *>) {
-                val hm = obj as HashMap<String, Any>
-                if (hm.size == 2) {
-                    isFinishedRef.setValue(true)
-                    answersRef.removeValue()
-                    isFinishedRef.removeValue()
-                    var selfAnswers: List<List<Any>> = ArrayList()
-                    var partnerAnswers: List<List<Any>> = ArrayList()
-                    for (key in hm.keys) {
-                        if (key == deviceId) {
-                            selfAnswers = hm[key] as List<List<Any>>
-                        } else {
-                            partnerAnswers = hm[key] as List<List<Any>>
-                        }
-                    }
-                    _listener?.answersReceived(selfAnswers, partnerAnswers)
-                }
-            }
-        }
-
-        override fun onCancelled(databaseError: DatabaseError) {}
-    }
+//    private fun subscribeToSession() {
+//        val database = FirebaseDatabase.getInstance()
+//        val sessionsRef = database.getReference("sessions")
+//        val sessionRef = sessionsRef.child(_sessionCode!!)
+//        val answers1Ref = sessionRef.child("answers")
+//        val answers2Ref = sessionRef.child("answers2")
+//        val answers3Ref = sessionRef.child("answers3")
+//        answers1Ref.addValueEventListener(AnswersListener("answers", _answers1ReceivedListener))
+//        answers2Ref.addValueEventListener(AnswersListener("answers2", _answers2ReceivedListener))
+//        answers3Ref.addValueEventListener(AnswersListener("answers3", _answers3ReceivedListener))
+//    }
+//
+//     inner class AnswersListener(
+//        private val _answersBranch: String,
+//        private val _listener: IAnswersReceivedListener?
+//    ) : ValueEventListener {
+//        override fun onDataChange(dataSnapshot: DataSnapshot) {
+//            if (!dataSnapshot.exists()) {
+//                return
+//            }
+//            val database = FirebaseDatabase.getInstance()
+//            val sessionsRef = database.getReference("sessions")
+//            val sessionRef = sessionsRef.child(_sessionCode!!)
+//            val answersRef = sessionRef.child(_answersBranch)
+//            val isFinishedRef = sessionRef.child("isFinished")
+//            val obj = dataSnapshot.value
+//            if (obj is HashMap<*, *>) {
+//                val hm = obj as HashMap<String, Any>
+//                if (hm.size == 2) {
+//                    isFinishedRef.setValue(true)
+//                    answersRef.removeValue()
+//                    isFinishedRef.removeValue()
+//                    var selfAnswers: List<List<Any>> = ArrayList()
+//                    var partnerAnswers: List<List<Any>> = ArrayList()
+//                    for (key in hm.keys) {
+//                        if (key == deviceId) {
+//                            selfAnswers = hm[key] as List<List<Any>>
+//                        } else {
+//                            partnerAnswers = hm[key] as List<List<Any>>
+//                        }
+//                    }
+//                    _listener?.answersReceived(selfAnswers, partnerAnswers)
+//                }
+//            }
+//        }
+//
+//        override fun onCancelled(databaseError: DatabaseError) {}
+//    }
 
     fun tryMoveToSession(
         partnerCode: String,

@@ -28,7 +28,7 @@
                     android:src="@drawable/ic_woman" />
 
 
-            <EditText
+            <TextView
                     android:id="@+id/name_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,12 +40,15 @@
                     android:textSize="20sp" />
 
             <TextView
+                    android:id="@+id/edit_my_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/comfortaa_regular"
                     android:text="редактировать"
-                    android:textColor="@color/purpul"
+                    android:background="@color/opasity_white15"
+                    android:padding="8dp"
+                    android:textColor="@android:color/white"
                     android:textSize="12sp" />
         </LinearLayout>
 
@@ -81,7 +84,9 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/comfortaa_regular"
                     android:text="отсоединиться"
-                    android:textColor="@color/purpul"
+                    android:background="@color/opasity_white15"
+                    android:padding="8dp"
+                    android:textColor="@android:color/white"
                     android:textSize="12sp" />
         </LinearLayout>
 
@@ -208,7 +213,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/comfortaa_regular"
-                    android:text="Интересное"
+                    android:text="Другое"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
