@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.leokorol.testlove.R
 import com.leokorol.testlove.TestApp
+import com.leokorol.testlove.activites.base_activity.BaseActivity
 import com.leokorol.testlove.activites.results.ResultActivityTestThree
 import com.leokorol.testlove.activites.results.ResultActivityTestTwo
 import com.leokorol.testlove.activites.results.ResultsActivityTestOne
@@ -17,9 +18,9 @@ import com.leokorol.testlove.utils.replaceActivity
 import com.leokorol.testlove.utils.showToast
 import kotlinx.android.synthetic.main.activity_tests_menu.*
 
-class MenuTestsActivity : AppCompatActivity() {
+class MenuTestsActivity : BaseActivity() {
 
-    private val database = FirebaseDatabase.getInstance()
+    override val isTestListenersEnabled: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,24 +30,6 @@ class MenuTestsActivity : AppCompatActivity() {
         checkLastSession()
         deleteProgressListeners()
         clickListeners()
-
-        AuthManager2.isConnectedPartner(TestApp.getUserCode(), {
-            AuthManager2.subscribePartnerTestResults(TestApp.getPartnerCode())
-            AuthManager2.subscribeMyTestResults(TestApp.getUserCode())
-        }, {})
-
-        AuthManager2.setTest1Listener { my, partner ->
-            showToast("Вы оба пришли тест 1. Можете посмотреть результаты ")
-        }
-
-        AuthManager2.setTest2Listener { my, partner ->
-            showToast("Вы оба пришли тест 2. Можете посмотреть результаты ")
-        }
-
-        AuthManager2.setTest3Listener { my, partner ->
-            showToast("Вы оба пришли тест 3. Можете посмотреть результаты ")
-        }
-
     }
 
     private fun deleteProgressListeners() {

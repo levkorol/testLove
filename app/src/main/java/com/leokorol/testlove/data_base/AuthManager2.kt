@@ -111,11 +111,6 @@ object AuthManager2 {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
-
-//       test1Ref.addValueEventListener() //todo доделать логику получения с сравнивания ответов
-//       test2Ref.addValueEventListener()
-//       test3Ref.addValueEventListener()
-
     }
 
 
