@@ -27,11 +27,12 @@ object AuthManagerTest {
 
     fun connectToPartner(partnerCode: String) {
         val myCode = TestApp.sharedPref?.getString(TestApp.MY_CODE, "")
-        val deviceIdRefMy = myCode?.let { database.getReference(it).child("partner") }
-        deviceIdRefMy?.setValue(partnerCode)
+        myCode?.let { database.getReference(it).child("partner") }?.setValue(partnerCode)
+        // TODO 3 пункт
 
-        val deviceIdRefPartner = partnerCode.let { database.getReference(it).child("partner") }
-        deviceIdRefPartner.setValue(myCode)
+        val partnerRef = database.getReference(partnerCode)
+        partnerCode.let { partnerRef.child("partner") }.setValue(myCode)
+        partnerCode.let { partnerRef.child("partnerName") }.setValue("John Galt")
 
         test1PartnerResults = null
         test2PartnerResults = null

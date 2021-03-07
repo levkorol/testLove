@@ -9,17 +9,14 @@ open class BaseActivity : AppCompatActivity() {
 
     open val isTestListenersEnabled = false
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (isTestListenersEnabled) {
-            enableTestListeners()
-        }
+    override fun onResume() {
+        super.onResume()
+        if (isTestListenersEnabled) enableTestListeners()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if (isTestListenersEnabled) enableTestListeners()
+    override fun onPause() {
+        super.onPause()
+        if (isTestListenersEnabled) disableTestListeners()
     }
 
     protected open fun onResultsDone(count: Int) {}

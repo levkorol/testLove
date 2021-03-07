@@ -25,10 +25,10 @@ import kotlinx.android.synthetic.main.dialog_name_layout.view.*
 class MenuLauncherActivity : AppCompatActivity() {
 
     private val database = FirebaseDatabase.getInstance()
-    private val refMyConnect = database.getReference(TestApp.getUserCode()).child("partner")
-    private val refPartnerConnect = database.getReference(TestApp.getPartnerCode()).child("partner")
-//    private val refMyConnect = database.getReference(TestApp.getUserCode())
-//    private val refPartnerConnect = database.getReference(TestApp.getPartnerCode())
+    private val myPartnerRef = database.getReference(TestApp.getUserCode()).child("partner")
+    private val partnerPartnerRef = database.getReference(TestApp.getPartnerCode()).child("partner")
+    private val myRef = database.getReference(TestApp.getUserCode())
+    private val partnerRef = database.getReference(TestApp.getPartnerCode())
 
     private var gender = 0
 
@@ -55,14 +55,14 @@ class MenuLauncherActivity : AppCompatActivity() {
         })
     }
 
+    // TODO удалить потом если всё ок будет работать без него
     private fun disconnectPartner(isDisconnect: Boolean) {
-
         if (isDisconnect) {
-            refMyConnect.addValueEventListener(object : ValueEventListener {
+            myPartnerRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (!dataSnapshot.exists() || isDisconnect) {
-                        refMyConnect.removeValue()
-                        refPartnerConnect.removeValue()
+                        myPartnerRef.removeValue()
+                        partnerPartnerRef.removeValue()
                         visiblePartner(false)
                     }
                 }
@@ -70,11 +70,11 @@ class MenuLauncherActivity : AppCompatActivity() {
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
 
-            refPartnerConnect.addValueEventListener(object : ValueEventListener {
+            partnerPartnerRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (!dataSnapshot.exists() || isDisconnect) {
-                        refMyConnect.removeValue()
-                        refPartnerConnect.removeValue()
+                        myPartnerRef.removeValue()
+                        partnerPartnerRef.removeValue()
                         visiblePartner(false)
                     }
                 }
@@ -82,17 +82,13 @@ class MenuLauncherActivity : AppCompatActivity() {
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
         }
-
     }
 
     private fun initClick() {
 
         btnDisconnect.setOnClickListener {
-
-            disconnectPartner(true)
-
-            refPartnerConnect.removeValue()
-            refMyConnect.removeValue()
+            partnerRef.removeValue()
+            myRef.removeValue()
 
             visiblePartner(false)
         }
@@ -108,33 +104,26 @@ class MenuLauncherActivity : AppCompatActivity() {
         btnGoMenuTestsActivity.setOnClickListener { goToTestsActivity() }
         btnGoTogetherTestsActivity.setOnClickListener { replaceActivity(SingleTestsActivity()) }
         goIntresting.setOnClickListener { replaceActivity(InterestingActivity()) }
-        edit_my_info.setOnClickListener { dialog() }
+        edit_my_info.setOnClickListener { showDialog() }
     }
 
 
-    private fun dialog() {
+    private fun showDialog() {
         val dialogBuilder = AlertDialog.Builder(this, R.style.DialogStyle)
         val inflater = this.layoutInflater
         val dialogView = inflater.inflate(R.layout.dialog_name_layout, null)
         dialogBuilder.setView(dialogView)
         val radioGroup = dialogView.radio_group
-
-
-        when (radioGroup.checkedRadioButtonId) {
-            R.id.radio_woman -> {
-                gender = 1
-            }
-            R.id.radio_man -> {
-                gender = 2
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radio_woman -> {
+                    gender = 1
+                }
+                R.id.radio_man -> {
+                    gender = 2
+                }
             }
         }
-//        if (radio_woman.isChecked) {
-//            gender = 1
-//        }
-//
-//        if (radio_man.isChecked) {
-//            gender = 2
-//        }
 
         dialogBuilder.setPositiveButton("Сохранить") { _, _ ->
 

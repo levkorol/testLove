@@ -45,12 +45,12 @@ class ConnectActivity : AppCompatActivity() {
 
     private fun okBtnOnClick() {
         if (isConnectedToInternet()) {
-            AuthManagerTest.connectToPartner(connect_editTextPartnerCode.text.toString())
             AuthManager.instance.tryMoveToSession(
                 connect_editTextPartnerCode.text.toString(),
                 object : ISimpleListener {
                     override fun eventOccured() {
                         hideVirtualKeyboard()
+                        AuthManagerTest.connectToPartner(connect_editTextPartnerCode.text.toString())
                         TestApp.savePartnerCode(connect_editTextPartnerCode.text.toString())
                     }
                 },
