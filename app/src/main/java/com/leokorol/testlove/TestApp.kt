@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.firebase.database.FirebaseDatabase
-import com.leokorol.testlove.data_base.AuthManager2
+import com.leokorol.testlove.data_base.AuthManagerTest
 import java.util.*
 
 class TestApp : Application() {
@@ -12,11 +12,6 @@ class TestApp : Application() {
         super.onCreate()
         context = this
         init()
-
-//        AuthManager2.isConnectedPartner(getUserCode(), {
-//            AuthManager2.subscribePartnerTestResults(getPartnerCode())
-//            AuthManager2.subscribeMyTestResults(getUserCode())
-//        }, {})
 
     }
 
@@ -34,7 +29,7 @@ class TestApp : Application() {
         val deviceIdRef = database.getReference("queue").child(deviceId)
         deviceIdRef.setValue(code)
 
-        AuthManager2.initPartnerConnectedListener(code)
+        AuthManagerTest.initPartnerConnectedListener(code)
     }
 
 
@@ -44,6 +39,7 @@ class TestApp : Application() {
         const val USER_NAME = "USER_NAME"
         const val PARTNER_NAME = "PARTNER_NAME"
         const val MY_CODE = "CODE"
+        const val GENDER = "GENDER"
         const val PARTNER_CODE = "PARTNER_CODE"
         const val SESSiON_CODE = "SESSiON_CODE"
         const val LAST_QUESTION_1 = "LAST_QUESTION_1"
@@ -63,6 +59,17 @@ class TestApp : Application() {
             return result
         }
 
+        fun saveUserGender(userGender: Int) {
+            sharedPref?.edit()?.putInt(GENDER, userGender)?.apply()
+        }
+
+        fun getUserGender(): Int {
+            return sharedPref?.getInt(GENDER, 0) ?: 0
+        }
+
+        fun saveUserName(userName: String) {
+            sharedPref?.edit()?.putString(USER_NAME, userName)?.apply()
+        }
 
         fun getUserName(): String {
             return sharedPref?.getString(USER_NAME, "") ?: ""

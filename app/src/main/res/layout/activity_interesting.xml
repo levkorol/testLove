@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/_bg_menu"
         android:orientation="vertical"
-        tools:context=".activites.menu.intresting.InterestingActivity">
+        tools:context=".ui.menu.intresting.InterestingActivity">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -37,6 +37,7 @@
     </LinearLayout>
 
     <TextView
+            android:id="@+id/goTestOnPlayMarket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -127,7 +128,7 @@
     </LinearLayout>
 
     <Button
-            android:id="@+id/buttonOk"
+            android:id="@+id/buttonGoSeeTodo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

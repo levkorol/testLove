@@ -5,7 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.leokorol.testlove.TestApp
-import com.leokorol.testlove.base_listeners.ISimpleListener
+import com.leokorol.testlove.ui.base.ISimpleListener
 
 class AuthManager {
 
@@ -117,8 +117,8 @@ class AuthManager {
     ) {
         val database = FirebaseDatabase.getInstance()
         val queueRef = database.getReference("queue")
-        val sessionsRef = database.getReference("sessions")
-        _sessionCode = null
+        //val sessionsRef = database.getReference("sessions")
+        // _sessionCode = null
         isConnectedToPartner = false
         isInQueue = true
         queueRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -138,14 +138,14 @@ class AuthManager {
                     }
                 }
                 if (found) {
-                    _sessionCode = code + "_" + partnerCode
-                    TestApp.sharedPref?.edit()?.putString(TestApp.SESSiON_CODE, _sessionCode)
-                        ?.apply()
-                    queueRef.child(deviceId).removeValue()
-                    queueRef.child(foundId!!).removeValue()
-                    sessionsRef.child(_sessionCode!!).child("user2").setValue(123)
+                    //  _sessionCode = code + "_" + partnerCode
+//                    TestApp.sharedPref?.edit()?.putString(TestApp.SESSiON_CODE, _sessionCode)
+//                        ?.apply()
+//                    queueRef.child(deviceId).removeValue()
+//                    queueRef.child(foundId!!).removeValue()
+                    //   sessionsRef.child(_sessionCode!!).child("user2").setValue(123)
                     successListener?.eventOccured()
-                    sessionsRef.child(_sessionCode!!).child("user2").removeValue()
+                    //   sessionsRef.child(_sessionCode!!).child("user2").removeValue()
                 } else {
                     failListener?.eventOccured()
                 }

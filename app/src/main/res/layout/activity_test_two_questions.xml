@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/_bg_test_2"
-        tools:context=".activites.tests.TestTwoQuestions">
+        tools:context=".ui.menu.togetherTests.testsBase.TestTwoQuestions">
 
     <Button
             android:id="@+id/button_home"
