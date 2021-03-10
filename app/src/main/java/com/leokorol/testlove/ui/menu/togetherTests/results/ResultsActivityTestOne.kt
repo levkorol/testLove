@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_results.*
 
 class ResultsActivityTestOne : BaseActivity() {
 
+    override val isTestListenersEnabled: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)

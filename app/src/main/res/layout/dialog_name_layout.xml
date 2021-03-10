@@ -5,48 +5,48 @@
         android:background="@color/dark_blu"
         android:orientation="vertical">
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/comfortaa_semi_bold"
-            android:gravity="center"
-            android:text="Ваш пол:"
-            android:textColor="@android:color/white"
-            android:textSize="19sp" />
+    <!--    <TextView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            android:fontFamily="@font/comfortaa_semi_bold"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="Ваш пол:"-->
+    <!--            android:textColor="@android:color/white"-->
+    <!--            android:textSize="19sp" />-->
 
-    <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="26dp"
-            android:orientation="horizontal"
-            android:padding="20dp">
+    <!--    <RadioGroup-->
+    <!--            android:id="@+id/radio_group"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginHorizontal="26dp"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:padding="20dp">-->
 
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_woman" />
+    <!--        <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:src="@drawable/ic_woman" />-->
 
-        <RadioButton
-                android:id="@+id/radio_woman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1.5" />
+    <!--        <RadioButton-->
+    <!--                android:id="@+id/radio_woman"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginStart="16dp"-->
+    <!--                android:layout_weight="1.5" />-->
 
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_man" />
+    <!--        <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:src="@drawable/ic_man" />-->
 
-        <RadioButton
-                android:id="@+id/radio_man"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="0" />
-    </RadioGroup>
+    <!--        <RadioButton-->
+    <!--                android:id="@+id/radio_man"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginStart="16dp"-->
+    <!--                android:layout_weight="0" />-->
+    <!--    </RadioGroup>-->
 
     <TextView
             android:layout_width="match_parent"

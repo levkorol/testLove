@@ -14,6 +14,7 @@ class SuccessConnectActivity : AppCompatActivity() {
         setContentView(R.layout.activity_success_connect)
 
         clickListeners()
+
     }
 
     private fun clickListeners() {

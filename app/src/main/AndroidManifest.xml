@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+            android:hardwareAccelerated="true"
             android:name=".TestApp"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -32,7 +33,9 @@
         <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestTwoQuestions" />
         <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestOneQuestions" />
         <activity android:name=".ui.menu.togetherTests.MenuTestsActivity" />
-        <activity android:name=".ui.menu.MenuLauncherActivity">
+        <activity
+                android:name=".ui.menu.MenuLauncherActivity"
+                android:hardwareAccelerated="false">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -41,6 +44,10 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-7417227423932528~4529293443" />
     </application>
 
 </manifest>

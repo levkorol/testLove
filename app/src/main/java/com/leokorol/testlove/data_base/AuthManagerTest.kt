@@ -26,19 +26,37 @@ object AuthManagerTest {
     private val database = FirebaseDatabase.getInstance()
 
     fun connectToPartner(partnerCode: String) {
+        var partnerNameValue = "Партнер"
+        //    TestApp.savePartnerName(partnerNameValue)
+
+        val namesRef = database.getReference("names")
+        namesRef.addListenerForSingleValueEvent(AppValueEventListener {
+            for (snapshot in it.children) {
+                if (it.hasChild(partnerCode)) {
+                    partnerNameValue = it.child(partnerCode).value.toString()
+                    TestApp.savePartnerName(partnerNameValue)
+                }
+            }
+        })
+
         val myCode = TestApp.sharedPref?.getString(TestApp.MY_CODE, "")
+
         myCode?.let { database.getReference(it).child("partner") }?.setValue(partnerCode)
-        // TODO 3 пункт
+        myCode?.let { database.getReference(it).child("partnerName") }
+            ?.setValue(TestApp.getPartnerName())
 
         val partnerRef = database.getReference(partnerCode)
+
         partnerCode.let { partnerRef.child("partner") }.setValue(myCode)
-        partnerCode.let { partnerRef.child("partnerName") }.setValue("John Galt")
+        partnerCode.let { partnerRef.child("partnerName") }.setValue(TestApp.getUserName())
+
 
         test1PartnerResults = null
         test2PartnerResults = null
         test3PartnerResults = null
 
         subscribePartnerTestResults(partnerCode)
+
     }
 
     fun saveAnswer(testNumber: Int, questionNumber: Int, answerNumbers: Set<String>) {
@@ -196,3 +214,5 @@ object AuthManagerTest {
         isInitialised = true
     }
 }
+
+

@@ -1,6 +1,5 @@
 package com.leokorol.testlove.ui.base
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.leokorol.testlove.TestApp
 import com.leokorol.testlove.data_base.AuthManagerTest
@@ -20,6 +19,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected open fun onResultsDone(count: Int) {}
+   // protected open fun onResultDoneTwo(count: Int) {}
 
     private fun enableTestListeners() {
         // подписываем AuthManagerTest на результаты
@@ -62,13 +62,3 @@ open class BaseActivity : AppCompatActivity() {
         AuthManagerTest.setTest3Listener { _, _ -> }
     }
 }
-
-
-//            if (my != null && partner != null && my.size == partner.size) {
-//                for (i in my.indices) {
-//                  for (j in my[i].indices) {
-//                        if(my[i][j] == partner[i][j]) {
-//                            sameAnswerTest3++
-//                        }
-//               }
-//  }

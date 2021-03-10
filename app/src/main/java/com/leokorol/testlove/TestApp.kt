@@ -41,7 +41,7 @@ class TestApp : Application() {
         const val MY_CODE = "CODE"
         const val GENDER = "GENDER"
         const val PARTNER_CODE = "PARTNER_CODE"
-        const val SESSiON_CODE = "SESSiON_CODE"
+
         const val LAST_QUESTION_1 = "LAST_QUESTION_1"
         const val LAST_QUESTION_2 = "LAST_QUESTION_2"
         const val LAST_QUESTION_3 = "LAST_QUESTION_3"
@@ -59,6 +59,11 @@ class TestApp : Application() {
             return result
         }
 
+
+        fun getDeviceId(): String {
+            return sharedPref?.getString(DEVICE_ID, "") ?: ""
+        }
+
         fun saveUserGender(userGender: Int) {
             sharedPref?.edit()?.putInt(GENDER, userGender)?.apply()
         }
@@ -72,7 +77,15 @@ class TestApp : Application() {
         }
 
         fun getUserName(): String {
-            return sharedPref?.getString(USER_NAME, "") ?: ""
+            return sharedPref?.getString(USER_NAME, "") ?: "Имя"
+        }
+
+        fun savePartnerName(partnerName: String) {
+            sharedPref?.edit()?.putString(PARTNER_NAME, partnerName)?.apply()
+        }
+
+        fun getPartnerName(): String {
+            return sharedPref?.getString(PARTNER_NAME, "") ?: "Партнер"
         }
 
         fun getPartnerCode(): String {

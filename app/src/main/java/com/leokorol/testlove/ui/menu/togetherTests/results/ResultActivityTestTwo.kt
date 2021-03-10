@@ -10,6 +10,9 @@ import kotlinx.android.synthetic.main.activity_result_test_three.goTestActivity
 import kotlinx.android.synthetic.main.activity_result_test_two.*
 
 class ResultActivityTestTwo : BaseActivity() {
+
+    override val isTestListenersEnabled: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result_test_two)
@@ -19,7 +22,6 @@ class ResultActivityTestTwo : BaseActivity() {
 
     override fun onResultsDone(count: Int) {
         super.onResultsDone(count)
-        resultsTwoTestTextView.text =
-            Results.getResultsPart2(count)
+        resultsTwoTestTextView.text = Results.getResultsPart2(count)
     }
 }
