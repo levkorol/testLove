@@ -185,7 +185,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/comfortaa_regular"
-                    android:text="Тесты для пар"
+                    android:text="    Тесты для пар   "
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />

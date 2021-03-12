@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.leokorol.testlove.R
 import com.leokorol.testlove.ui.menu.MenuLauncherActivity
 import com.leokorol.testlove.utils.replaceActivity
+import com.leokorol.testlove.utils.showToast
 import kotlinx.android.synthetic.main.activity_together_enter_name.*
 
 class SingleTestsActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class SingleTestsActivity : AppCompatActivity() {
     }
 
     private fun clickListeners() {
+        buttonOk.setOnClickListener { showToast("Спасибо! Совсем скоро :)") }
         tgoMenuActivity.setOnClickListener { replaceActivity(MenuLauncherActivity()) }
     }
 }
