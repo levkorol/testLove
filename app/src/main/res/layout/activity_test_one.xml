@@ -1,53 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/_bg_test_1"
+        android:orientation="vertical"
         tools:context=".ui.menu.togetherTests.testsBase.TestOneQuestions">
 
-    <Button
-            android:id="@+id/button2"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/profile"
-            android:onClick="goToMenuActivity"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="UsingOnClickInXml" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/button2"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/profile"
+                android:onClick="goToMenuActivity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UsingOnClickInXml" />
+
+        <TextView
+                android:id="@+id/textViewNumberQuestion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/yeseva_one_regular"
+                android:gravity="center"
+                android:text="1/60"
+                android:textColor="@color/purpul"
+                android:textSize="22sp" />
+    </LinearLayout>
 
     <TextView
             android:id="@+id/textViewQuestionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:fontFamily="@font/comfortaa_bold"
             android:padding="16dp"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNumberQuestion"
             tools:text="abydsgsfgsfgdfgrvalg" />
 
-    <TextView
-            android:id="@+id/textViewNumberQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/yeseva_one_regular"
-            android:text="1/60"
-            android:textColor="@color/purpul"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.428"
-            app:layout_constraintStart_toEndOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:listitem="@layout/layout_answer_variant" />
+    </ScrollView>
 
     <Button
             android:id="@+id/buttonOk"
@@ -55,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="75dp"
             android:layout_marginEnd="75dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/btn_next"
             android:fontFamily="@font/yeseva_one_regular"
             android:gravity="center"
@@ -65,17 +80,26 @@
             android:text="Далее"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="19sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonOk"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewQuestionText" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+            android:id="@+id/variants_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="Можно выбрать 1 или 2 варианта"
+            android:textColor="@color/purpul"
+            android:textSize="12sp" />
+
+
+    <com.google.android.gms.ads.AdView
+            android:id="@+id/adViewTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id" />
+
+</LinearLayout>

@@ -4,14 +4,15 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/_bg_test_3"
         tools:context=".ui.menu.togetherTests.testsBase.TestThreeQuestions">
 
 
     <Button
             android:id="@+id/button12"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/profile"
@@ -38,7 +39,6 @@
             android:id="@+id/textViewQuestionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:fontFamily="@font/comfortaa_bold"
             android:padding="16dp"
             android:textAlignment="center"
@@ -48,7 +48,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewNumberQuestion"
-            tools:text="abydsgsfgsfgdfgrvalg" />
+            tools:text="abydsgsfgsfgdfgrvahfhgfhfghfghfghfghfghfghfghfghfghfghfghfghfglg" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/button13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewQuestionText" />
 
     <Button
             android:id="@+id/button13"
@@ -67,16 +76,34 @@
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button13"
+    <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/comfortaa_light"
+            android:paddingBottom="16dp"
+            android:text="Можно выбрать 1 или 2 варианта"
+            android:textColor="@color/purpul"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button13" />
+
+
+    <com.google.android.gms.ads.AdView
+            android:id="@+id/adViewTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewQuestionText" />
+            app:layout_constraintTop_toBottomOf="@id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.leokorol.testlove.R
 import com.leokorol.testlove.TestApp
 import com.leokorol.testlove.data_base.AuthManagerTest
@@ -34,6 +38,7 @@ open class BaseTestQuestionsActivity(
 
     //private lateinit var _allAnswerVariants: Array<Array<AnswerVariant>>
     private var _currentQuestionIndex = 0
+    private lateinit var mAdView: AdView
 
     private val countOfCheckedAnswers: Int
         get() {
@@ -58,6 +63,24 @@ open class BaseTestQuestionsActivity(
         _currentQuestionIndex = TestApp.sharedPref?.getInt(lastQuestion, 0) ?: 0
 
         goToQuestion(0)
+
+        initAds()
+    }
+
+    private fun initAds() {
+        MobileAds.initialize(this) {}
+        val listId = listOf("AC15A1685814DB24010455FD90B6BAC9")
+        val configuration = RequestConfiguration
+            .Builder()
+            .setTestDeviceIds(listId)
+            .build()
+        MobileAds.setRequestConfiguration(configuration)
+
+        mAdView = findViewById(R.id.adViewTest)
+        val adRequest = AdRequest.Builder()
+            .build()
+
+        mAdView.loadAd(adRequest)
     }
 
     fun goToMenuActivity(view: View?) {
