@@ -3,16 +3,25 @@ package com.leokorol.testlove
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.database.FirebaseDatabase
 import com.leokorol.testlove.data_base.AuthManagerTest
+import com.leokorol.testlove.utils.AppOpenManager
 import java.util.*
 
 class TestApp : Application() {
+
+    private lateinit var appOpenManager: AppOpenManager
+
     override fun onCreate() {
         super.onCreate()
         context = this
         init()
 
+        MobileAds.initialize(
+            this
+        ) { }
+        appOpenManager = AppOpenManager(this)
     }
 
     private fun init() {

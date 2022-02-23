@@ -87,6 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/comfortaa_light"
             android:text="Можно выбрать 1 или 2 варианта"
             android:textColor="@color/purpul"

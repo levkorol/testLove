@@ -15,27 +15,67 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
-        <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.results.ResultActivityTestThree"></activity>
-        <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.results.ResultActivityTestTwo" />
-        <activity android:name=".ui.menu.connect.SuccessConnectActivity" />
-        <activity android:name=".ui.menu.singleTests.SingleTestsActivity" />
-        <activity android:name=".ui.menu.intresting.InterestingActivity" />
-        <activity android:name=".ui.menu.connect.ConnectActivity" />
-        <activity android:name=".ui.splash.SplashActivity">
+
+        <activity
+                android:name="com.leokorol.testlove.ui.menu.togetherTests.results.ResultActivityTestThree"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.leokorol.testlove.ui.menu.togetherTests.results.ResultActivityTestTwo"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.menu.connect.SuccessConnectActivity"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.menu.singleTests.SingleTestsActivity"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.menu.intresting.InterestingActivity"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.menu.connect.ConnectActivity"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.splash.SplashActivity"
+                android:exported="true"
+                android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.results.ResultsActivityTestOne" />
-        <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestThreeQuestions" />
-        <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestTwoQuestions" />
-        <activity android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestOneQuestions" />
-        <activity android:name=".ui.menu.togetherTests.MenuTestsActivity" />
+        <activity
+                android:name="com.leokorol.testlove.ui.menu.togetherTests.results.ResultsActivityTestOne"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestThreeQuestions"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestTwoQuestions"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name="com.leokorol.testlove.ui.menu.togetherTests.testsBase.TestOneQuestions"
+                android:exported="true"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.menu.togetherTests.MenuTestsActivity"
+                android:exported="true"
+                android:screenOrientation="portrait" />
         <activity
                 android:name=".ui.menu.MenuLauncherActivity"
-                android:hardwareAccelerated="false">
+                android:exported="true"
+                android:hardwareAccelerated="false"
+                android:screenOrientation="portrait">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
